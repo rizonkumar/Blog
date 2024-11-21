@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Logo from "./Logo";
-import { LogIn, Menu, X } from "lucide-react";
+import { LogIn, Menu, X, Home, TrendingUp, Star, Info } from "lucide-react";
 
 const NavBar = () => {
   const [open, setOpen] = useState(false);
@@ -23,19 +23,52 @@ const NavBar = () => {
         </div>
         {/* MOBILE LINK LIST */}
         <div
-          className={`bg-[#e6e6ff]] absolute top-16 flex h-screen w-full flex-col items-center justify-center transition-all ease-in-out ${open ? "-right-0" : "-right-[100%]"}`}
+          className={`absolute top-16 flex h-screen w-full flex-col items-center justify-center gap-8 bg-[#e6e6ff] text-lg font-medium transition-all ease-in-out ${open ? "-right-0" : "-right-[100%]"}`}
         >
-          Menu
+          <a href="" className="flex items-center gap-2">
+            <Home className="size-5" />
+            Home
+          </a>
+          <a href="" className="flex items-center gap-2">
+            <TrendingUp className="size-5" />
+            Trending
+          </a>
+          <a href="" className="flex items-center gap-2">
+            <Star className="size-5" />
+            Most Popular
+          </a>
+          <a href="" className="flex items-center gap-2">
+            <Info className="size-5" />
+            About
+          </a>
+          <a href="" className="flex items-center gap-2">
+            <button className="flex items-center gap-2 rounded-lg bg-blue-800 px-4 py-2 text-white transition-colors hover:bg-blue-600">
+              Login <LogIn className="size-5 cursor-pointer" />
+            </button>
+          </a>
         </div>
       </div>
+
       {/* Desktop Menu */}
       <div className="hidden items-center gap-8 font-medium md:flex xl:gap-12">
-        <a href="">Home</a>
-        <a href="">Trending</a>
-        <a href="">Most Popular</a>
-        <a href="">About</a>
-        <a href="">
-          <button className="flex items-center gap-1">
+        <a href="" className="flex items-center gap-2">
+          <Home className="size-5" />
+          Home
+        </a>
+        <a href="" className="flex items-center gap-2">
+          <TrendingUp className="size-5" />
+          Trending
+        </a>
+        <a href="" className="flex items-center gap-2">
+          <Star className="size-5" />
+          Most Popular
+        </a>
+        <a href="" className="flex items-center gap-2">
+          <Info className="size-5" />
+          About
+        </a>
+        <a href="" className="flex items-center gap-2">
+          <button className="flex items-center gap-2 rounded-lg bg-blue-800 px-4 py-2 text-white transition-colors hover:bg-blue-600">
             Login <LogIn className="size-5 cursor-pointer" />
           </button>
         </a>
