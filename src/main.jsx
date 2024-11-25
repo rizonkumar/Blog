@@ -7,41 +7,45 @@ import PostListPage from "./routes/PostListPage.jsx";
 import SinglePostPage from "./routes/SinglePostPage.jsx";
 import WritePage from "./routes/WritePage.jsx";
 import RegisterPage from "./routes/RegisterPage.jsx";
+import MainLayout from "./layouts/MainLayout.jsx";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: <Homepage />,
-  },
-  {
-    path: "/login",
-    element: <Loginpage />,
-  },
-  {
-    path: "/posts",
-    element: <PostListPage />,
-  },
-  {
-    path: "/:slug",
-    element: <SinglePostPage />,
-  },
-  {
-    path: "/write",
-    element: <WritePage />,
-  },
-  {
-    path: "/register",
-    element: <RegisterPage />,
+    element: <MainLayout />,
+    children: [
+      {
+        path: "/",
+        element: <Homepage />,
+      },
+      {
+        path: "/login",
+        element: <Loginpage />,
+      },
+      {
+        path: "/posts",
+        element: <PostListPage />,
+      },
+      {
+        path: "/:slug",
+        element: <SinglePostPage />,
+      },
+      {
+        path: "/write",
+        element: <WritePage />,
+      },
+      {
+        path: "/register",
+        element: <RegisterPage />,
+      },
+    ],
   },
 ]);
 
 createRoot(document.getElementById("root")).render(
-  <StrictMode>
-    <ClerkProvider publishableKey={PUBLISHABLE_KEY}>
-      <QueryClientProvider client={queryClient}>
-        <RouterProvider router={router} />
-        <ToastContainer position="bottom-right" />
-      </QueryClientProvider>
-    </ClerkProvider>
-  </StrictMode>,
+  <>
+    <RouterProvider router={router} />
+    <ToastContainer position="bottom-right" />
+  </>,
 );
