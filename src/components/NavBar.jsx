@@ -2,6 +2,7 @@ import { useState } from "react";
 import Logo from "./Logo";
 import { LogIn, Menu, X, Home, TrendingUp, Star, Info } from "lucide-react";
 import { Link } from "react-router-dom";
+import { SignedIn, SignedOut, UserButton } from "@clerk/clerk-react";
 
 const NavBar = () => {
   const [open, setOpen] = useState(false);
@@ -32,11 +33,11 @@ const NavBar = () => {
             <Home className="size-5" />
             Home
           </Link>
-          <Link to="/trending" className="flex items-center gap-2">
+          <Link to="/posts?sort=trending" className="flex items-center gap-2">
             <TrendingUp className="size-5" />
             Trending
           </Link>
-          <Link to="/popular" className="flex items-center gap-2">
+          <Link to="/posts?sort=popular" className="flex items-center gap-2">
             <Star className="size-5" />
             Most Popular
           </Link>
@@ -58,11 +59,11 @@ const NavBar = () => {
           <Home className="size-5" />
           Home
         </Link>
-        <Link to="/trending" className="flex items-center gap-2">
+        <Link to="/posts?sort=trending" className="flex items-center gap-2">
           <TrendingUp className="size-5" />
           Trending
         </Link>
-        <Link to="/popular" className="flex items-center gap-2">
+        <Link to="/posts?sort=popular" className="flex items-center gap-2">
           <Star className="size-5" />
           Most Popular
         </Link>
@@ -70,11 +71,16 @@ const NavBar = () => {
           <Info className="size-5" />
           About
         </Link>
-        <Link to="/login" className="flex items-center gap-2">
-          <button className="flex items-center gap-2 rounded-lg bg-blue-800 px-4 py-2 text-white transition-colors hover:bg-blue-600">
-            Login <LogIn className="size-5 cursor-pointer" />
-          </button>
-        </Link>
+        <SignedOut>
+          <Link to="/login" className="flex items-center gap-2">
+            <button className="flex items-center gap-2 rounded-lg bg-blue-800 px-4 py-2 text-white transition-colors hover:bg-blue-600">
+              Login <LogIn className="size-5 cursor-pointer" />
+            </button>
+          </Link>
+        </SignedOut>
+        <SignedIn>
+          <UserButton />
+        </SignedIn>
       </div>
     </div>
   );
