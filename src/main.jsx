@@ -10,6 +10,13 @@ import RegisterPage from "./routes/RegisterPage.jsx";
 import MainLayout from "./layouts/MainLayout.jsx";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { ClerkProvider } from "@clerk/clerk-react";
+
+const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
+
+if (!PUBLISHABLE_KEY) {
+  throw new Error("Missing Publishable Key");
+}
 
 const router = createBrowserRouter([
   {
@@ -45,7 +52,9 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")).render(
   <>
-    <RouterProvider router={router} />
-    <ToastContainer position="bottom-right" />
+    <ClerkProvider publishableKey={PUBLISHABLE_KEY}>
+      <RouterProvider router={router} />
+      <ToastContainer position="bottom-right" />
+    </ClerkProvider>
   </>,
 );
