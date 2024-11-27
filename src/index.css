@@ -2,8 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  background-color: #e6e6ff;
-  width: 100vw;
-  font-family: "Poppins", sans-serif;
+@layer base {
+  body {
+    @apply text-gray-900 antialiased;
+    @apply overflow-x-hidden;
+  }
+}
+
+.animate-spin-slow {
+  animation: spin 15s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-gradient-to-r from-blue-800 to-blue-600 bg-clip-text text-transparent;
+  }
 }

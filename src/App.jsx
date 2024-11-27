@@ -1,15 +1,14 @@
 import "./App.css";
 import NavBar from "./components/NavBar";
+import Homepage from "./routes/Homepage";
 
 function App() {
   return (
-    <div className="lx:px-32 px-4 md:px-8 lg:px-16 2xl:px-64">
-      {/* NavBar */}
+    <div className="relative min-h-screen bg-gray-50">
       <NavBar />
-      {/* Breadcrumbs */}
-      {/* Intro */}
-      {/* Features Post */}
-      {/* Post List */}
+      <main className="mx-auto max-w-7xl px-4 pt-24 sm:px-6 lg:px-8">
+        <Homepage />
+      </main>
     </div>
   );
 }
